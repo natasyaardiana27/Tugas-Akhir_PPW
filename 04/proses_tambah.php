@@ -18,6 +18,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Panggil fungsi proses tambah data dengan validasi server-side
     $hasil = tambah_mahasiswa($npm, $nama, $program_studi, $angkatan, $email);
+    $npm = sanitize($npm);
+    $nama = sanitaze(nama);
+    $program_studi = sanitaze($program_studi);
+    $angkatan = (int) $angkatan;
+    $email = sanitaze($email);
 
     if ($hasil['status']) {
         set_flash_message('success', $hasil['message']);

@@ -34,7 +34,7 @@ function init_mahasiswa_session() {
             'npm' => '2301011015',
             'nama' => 'Budi Santoso',
             'program_studi' => 'Teknologi Informasi',
-            'angkatan' => 2023,
+            'angkatan' => 2024,
             'email' => 'budi.santoso@example.com'
         ]
         ];
@@ -47,6 +47,7 @@ function init_mahasiswa_session() {
 function sanitize($data) {
    return htmlspecialchars(trim($data), ENT_QUOTES, 'UTF_8');
 }
+
 
 /**
  * Mengambil semua data mahasiswa dengan opsi filter pencarian
@@ -79,7 +80,8 @@ function get_all_mahasiswa($keyword = '') {
  * Menghitung total data mahasiswa yang tersimpan
  */
 function count_total_mahasiswa() {
-    
+    init_mahasiswa_session();
+    return count($_SESSION['daftar_mahasiswa']);
 }
 
 /**

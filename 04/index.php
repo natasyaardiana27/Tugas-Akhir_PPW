@@ -5,17 +5,20 @@
  * Halaman utama dengan rendering server-side dinamis.
  */
 
-
 // memanggil file functions.php
 require_once __DIR__ . '/includes/functions.php';
-$spage_title = 'Uji Fungsi Modular - Percobaan 1';
+$page_title = 'Uji Fungsi Modular - Percobaan 1';
 $daftar_mahasiswa = get_all_mahasiswa();
 $total_semua = count_total_mahasiswa();
+
 // Ambil keyword pencarian jika ada
+$keyword = isset($_GET['search']) ? trim($_GET['search']) : '';
 
 // Percobaan 4-4 Langkah 2
-$keyword = isset($_GET['search']) ? trim($_GET['search']) : '';
 $daftar_mahasiswa = get_all_mahasiswa($keyword);
+
+$total_semua = count_total_mahasiswa();
+$total_tampil = count($daftar_mahasiswa);
 
 // Ambil flash message dari session jika tersedia
 $flash = get_flash_message();
@@ -136,6 +139,7 @@ require_once __DIR__ . '/includes/header.php';
                                 <!-- Percobaan 4-2 Langkah 5 -->
                                 <a href="">Hapus</a>
                             </td>
+
                         </tr>
                     <?php endforeach; ?>
                 <?php endif; ?>
